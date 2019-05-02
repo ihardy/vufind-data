@@ -24,14 +24,16 @@ for f in ./data/holdingsrecords/*.json; do
     curl -w '\n' -X POST -D - \
          -H "Content-type: application/json" \
          -H "X-Okapi-Tenant: ${tenant}" \
+         -H "X-Okapi-Token: ${token}" \
          -d @$f \
          "${holdings_storage_address}"
 done
 
-for f in ./data/items/*.json; do
+for f in ./testitems/*.json; do
     curl -w '\n' -X POST -D - \
          -H "Content-type: application/json" \
          -H "X-Okapi-Tenant: ${tenant}" \
+         -H "X-Okapi-Token: ${token}" \
          -d @$f \
          "${item_storage_address}"
 done
